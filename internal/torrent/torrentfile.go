@@ -9,6 +9,8 @@ import (
 	"github.com/jackpal/bencode-go"
 )
 
+const Port uint16 = 6881
+
 type TorrentFile struct {
 	Announce    string
 	InfoHash    [20]byte
@@ -101,4 +103,17 @@ func (t *TorrentFile) PrintDetails() {
 	fmt.Println("Piece Length:", t.PieceLength)
 	fmt.Println("Total Length:", t.Length)
 	fmt.Println("Number of Pieces:", len(t.PieceHashes))
+
+	// // Get peers from the tracker
+	// peers, err := t.getPeers(peerId, port)
+	// if err != nil {
+	// 	fmt.Println("Error fetching peers:", err)
+	// 	return
+	// }
+
+	// // Print peers
+	// fmt.Println("Peers:")
+	// for _, peer := range peers {
+	// 	fmt.Printf("- %s:%d\n", peer.IP.String(), peer.Port)
+	// }
 }
